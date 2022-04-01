@@ -74,6 +74,7 @@ class Client:
 clients = list()
 myWorld = World()        
 
+# reference: https://github.com/abramhindle/WebSocketsExamples/blob/master/broadcaster.py
 def set_listener( entity, data ):
     ''' do something with the update ! '''
     for client in clients:
