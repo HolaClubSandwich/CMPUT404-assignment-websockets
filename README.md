@@ -59,3 +59,9 @@ Contributors
 * Mark Galloway
 * Abram Hindle
 * Cole Mackenzie
+
+Reference
+============
+
+* https://github.com/abramhindle/WebSocketsExamples/blob/master/broadcaster.py
+* https://www.educative.io/edpresso/how-to-generate-a-random-color-in-javascript

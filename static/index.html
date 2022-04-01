@@ -144,7 +144,7 @@
                     }
                 }
             }
-            xhr.open('POST', "http://127.0.0.1:8000/entity/" + entity, true);
+            xhr.open('POST', "http://127.0.0.1:5000/entity/" + entity, true);
             xhr.setRequestHeader("Content-Type", "text/html");
             xhr.send(JSON.stringify(data));
         }
@@ -252,17 +252,32 @@
 
         // Add the application specific mouse listeners!
         //XXX: TODO Make these prettier!
+        const randomRadius = (max, min) => 
+            Math.floor(Math.random() * (max - min) + min);
+
+        // reference https://www.educative.io/edpresso/how-to-generate-a-random-color-in-javascript
+        const randomColor = () => {
+            let maxVal = 0xFFFFFF;
+            let randomNumber = Math.random() * maxVal;
+            randomNumber = Math.floor(randomNumber);
+            randomNumber = randomNumber.toString(16);
+            let randomColor = randomNumber.padStart(6, 0);
+            return `#${randomColor.toUpperCase()}`
+            // return "#" + Math.floor(Math.random() * 1677215).toString(16).padStart(6, '0').toUpperCase();
+        }
+
+
         mouse.mousedowners.push(function(x,y,clicked,e) {
-            addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
+            addEntityWithoutName({'x':x,'y':y,'colour':randomColor(), 'radius':randomRadius(50, 10)});
         });
 
         mouse.mouseuppers.push(function(x,y,clicked,e) {
-            addEntityWithoutName({'x':x,'y':y,'colour':'red'});
+            addEntityWithoutName({'x':x,'y':y,'colour':randomColor(), 'radius':randomRadius(50, 10)});
         });
 
         mouse.mousedraggers.push(function(x,y,clicked,e) {
-            addEntityWithoutName({'x':x,'y':y,'colour':'green',
-                                'radius':10});
+            addEntityWithoutName({'x':x,'y':y,'colour':randomColor(),
+                                'radius':randomRadius(20, 10)});
         });
 
 
